@@ -54,4 +54,12 @@ public class PostsService {
                 .map(PostsResponseDto::new)                         // (2) Posts → PostsResponseDto 변환
                 .collect(Collectors.toList());
     }
+
+    @Transactional(readOnly = true)
+    public List<PostsResponseDto> findByAuthor(String author) {
+        return postsRepository.findByAuthor(author)
+                .stream()
+                .map(PostsResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }
