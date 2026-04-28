@@ -62,4 +62,12 @@ public class PostsService {
                 .map(PostsResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional(readOnly = true)
+    public List<PostsResponseDto> searchByTitle(String keyword) {
+        return postsRepository.findByTitleContaining(keyword)
+                .stream()
+                .map(PostsResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }
