@@ -67,7 +67,22 @@ var main = {
             }).fail(function (error) {
                 alert(JSON.stringify(error));
             });
+    },
+    validateForm : function (data) {
+        if (!data.title || data.title.trim() === '') {
+            alert('제목을 입력해주세요.');
+            return false;
         }
+        if (!data.author || data.author.trim() === '') {
+            alert('작성자를 입력해주세요.');
+            return false;
+        }
+        if (!data.content || data.content.trim() === '') {       // (1) 내용 검증
+            alert('내용을 입력해주세요.');
+            return false;
+        }
+        return true;
+    }
 };
 
 main.init();
