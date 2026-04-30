@@ -5,10 +5,12 @@ import com.jojoldu.book.springboot.config.auth.LoginUser;
 import com.jojoldu.book.springboot.service.posts.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequiredArgsConstructor
 @Controller
@@ -36,5 +38,11 @@ public class IndexController {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
         return "posts-update";
+    }
+
+    @GetMapping("/.well-known/appspecific/com.chrome.devtools.json")
+    @ResponseBody
+    public ResponseEntity<?> chromeDevTools() {
+        return ResponseEntity.ok("{}");
     }
 }

@@ -23,7 +23,7 @@ public class SecurityConfig {
                         headers.frameOptions(frameOptions -> frameOptions.disable())   // h2-console 화면을 사용하기 위해
                 )
                 .authorizeHttpRequests(auth -> auth                                // authorizeRequests() → authorizeHttpRequests()
-                        .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
+                        .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile", "/.well-known/**").permitAll()
                         .requestMatchers("/api/v1/**").hasRole(Role.USER.name())
                         .anyRequest().authenticated()
                 )
