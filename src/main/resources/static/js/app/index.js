@@ -71,3 +71,8 @@ var main = {
 };
 
 main.init();
+
+function alertLogin() {
+    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    loginModal.show();
+}
