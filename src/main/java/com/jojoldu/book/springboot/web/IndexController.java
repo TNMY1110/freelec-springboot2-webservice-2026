@@ -45,4 +45,9 @@ public class IndexController {
     public ResponseEntity<?> chromeDevTools() {
         return ResponseEntity.ok("{}");
     }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
 }
